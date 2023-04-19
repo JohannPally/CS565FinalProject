@@ -19,6 +19,13 @@ class History:
             self.samples.append(self.samples[-1])
         return
     
+    #TODO check for alerts
+    def check_noise(self):
+        return
+
+    def check_spaz(self):
+        return
+    
     #TODO plotting stuff
     def plot_positions(self):
         return

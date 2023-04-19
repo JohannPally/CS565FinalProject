@@ -2,16 +2,13 @@ from dog_detection import Vision
 import socket
 from dispenser import Control2
 from history import History
+from sound import Sound
 
 vis = Vision()
 hist = History()
+snd = Sound()
 HOST = "192.168.50.217" # IP address of your Raspberry PI
 PORT = 65432          # Port to listen on (non-privileged ports are > 1023)
-
-# while True:
-#     dc = vis.check_dog() 
-#     if dc is not None:
-#         print(dc)
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.bind((HOST, PORT))
@@ -20,22 +17,32 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 
     try:
         while 1:
-            #TODO VISION
+            #VISION
             dc = vis.check_dog()
             hist.add_position(dc)
 
-            #TODO AUDIO
-            
+            #AUDIO
+            samp = snd.get_sample()
+            hist.add_sample(samp)
 
-            #TODO CHAT
+            #CHAT
             client, clientInfo = s.accept()
             print("server recv from: ", clientInfo)
-            data = client.recv(1024)      # receive 1024 Bytes of message in binary format
+            data = client.recv(1024)
+
+            #STOP
+            if data == b"stop":
+                print("Closing socket")
+                client.close()
+                s.close()
+                break
+
             if data != b"":
                 print(data)  
-                orientation, traveled, obstacle = cntl.move(data)
-                message= f"{orientation},{traveled},{obstacle}".encode('ascii')
-                client.sendall(message) # Echo back to client
+                trts = cntl.act(data)
+                if trts is not None:
+                    message= f"Nova has gotten {trts} treats today!".encode('ascii')
+                    client.sendall(message) # Echo back to client
     except Exception as e:
         print('error: ', e)
         print("Closing socket")
