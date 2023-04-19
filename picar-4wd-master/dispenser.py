@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import time
 
 #TODO change to just turning a wheel
-class Control2:
+class Dispense:
 
     def __init__(self):
         fc.stop()
