@@ -7,7 +7,7 @@ class Sound:
     def __init__(self):
         self.p = pyaudio.PyAudio()
         WIDTH = 2
-        RATE = int(p.get_device_info_by_index(2)['defaultSampleRate'])
+        RATE = int(self.p.get_device_info_by_index(2)['defaultSampleRate'])
         # DEVICE = p.get_default_input_device_info()['index']
         DEVICE = 2
         self.rms = 1
