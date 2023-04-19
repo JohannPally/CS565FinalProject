@@ -75,6 +75,7 @@ class Vision:
                 if object_name == 'dog':
                     print('found dog')
                     return detection
+                #TODO add to history?
 
             # Calculate the FPS
             if self.counter % self.fps_avg_frame_count == 0:
