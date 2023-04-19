@@ -44,7 +44,7 @@ class Vision:
           base_options=base_options, detection_options=detection_options)
         self.detector = vision.ObjectDetector.create_from_options(options)
 
-    def check_stop_sign(self):
+    def check_dog(self):
         time_check = time.time()
         while(time.time()-time_check < 1):
             success, image = self.cap.read()
@@ -74,7 +74,7 @@ class Vision:
                 #print(object_name)
                 if object_name == 'dog':
                     print('found dog')
-                    return True
+                    return detection
 
             # Calculate the FPS
             if self.counter % self.fps_avg_frame_count == 0:
@@ -90,4 +90,4 @@ class Vision:
 
             # Stop the program if the ESC key is pressed.
             cv2.imshow('object_detector', image)
-        return False
+        return None
