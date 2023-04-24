@@ -41,12 +41,12 @@ while True:
     hist.add_position(det)
     hist.add_sample(smp)
 
-    print('noise', hist.check_noise())
+    # print('noise', hist.check_noise())
     # if hist.check_noise():
     #     message= f"NOISE alert".encode('utf-8')
     #     s.send(str(message))
 
-    print('move', hist.check_spaz())
+    # print('move', hist.check_spaz())
     # if hist.check_spaz():
     #     message= f"MOVEMENT alert".encode('utf-8')
     #     s.send(str(message))
