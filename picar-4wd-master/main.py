@@ -33,9 +33,7 @@ s = BluetoothServer(received_handler)
 #     message= f"alert test".encode('ascii')
 #     s.send(str(message))
 
-pause()
-
-while False:
+while True:
     #VISION
     det = vis.check_dog()
 
@@ -46,9 +44,12 @@ while False:
     hist.add_position(det)
     hist.add_sample(smp)
 
+    print('noise', hist.check_noise())
     if hist.check_noise():
         message= f"NOISE alert".encode('ascii')
         s.send(str(message))
+        
+    print('move', hist.check_spaz)
     if hist.check_spaz():
         message= f"MOVEMENT alert".encode('ascii')
         s.send(str(message))
