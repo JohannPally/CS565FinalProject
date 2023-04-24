@@ -2,7 +2,7 @@ import numpy as np
 
 class History:
     def __init__(self):
-        self.positions = [(50,50,200,200)]
+        self.positions = [np.array([50,50,200,201])]
         self.samples = [0.0]
 
     def add_position(self, detection):
@@ -25,9 +25,15 @@ class History:
 
     def check_spaz(self):
         sum = 0
-        for i in range(min(len(self.positions), 5)):
+        for i in range(min(len(self.positions)-1, 5)):
+            # print('in loop')
             j = i*-1
-            sum += np.sum(np.subtract(self.positions[j], self.positions[j-1]))
+            diff = np.subtract(self.positions[j], self.positions[j-1])
+            # print('diff', diff)
+            s = np.sum(diff)
+            # print('s', s)
+            sum += s
+            # print(sum)
         return sum
     
     #TODO plotting stuff
