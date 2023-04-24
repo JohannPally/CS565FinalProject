@@ -23,7 +23,8 @@ def received_handler(data):
         mess = f"Nova has been given {trts} treats so far!".encode('ascii')
         print('trying to send back')
         print(mess)
-        s.send(str(mess))
+        err = s.send(str(mess))
+        print(err)
     
 s = BluetoothServer(received_handler)
 
