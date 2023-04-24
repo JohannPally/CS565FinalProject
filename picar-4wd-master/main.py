@@ -24,8 +24,10 @@ def received_handler(data):
     
 s = BluetoothServer(received_handler)
 
-message= f"alert test".encode('ascii')
-s.send(str(message))
+while True:
+    input()
+    message= f"alert test".encode('ascii')
+    s.send(str(message))
 
 pause()
 
