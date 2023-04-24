@@ -5,7 +5,7 @@ import audioop
 
 class Sound:
     def __init__(self):
-        index = 0
+        index = 8
         self.p = pyaudio.PyAudio()
         WIDTH = 2
         RATE = int(self.p.get_device_info_by_index(index)['defaultSampleRate'])
