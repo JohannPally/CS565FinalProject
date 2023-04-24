@@ -13,7 +13,7 @@ class Dispense:
         return
     
     def check_message(self, mess):
-        return b'good' in mess.lower()
+        return b'good job!' == mess
     
     def act(self, mess):
         if self.check_message(mess):
