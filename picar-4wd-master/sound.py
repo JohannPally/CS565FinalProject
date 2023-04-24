@@ -12,7 +12,7 @@ class Sound:
         # DEVICE = p.get_default_input_device_info()['index']
         DEVICE = index
         self.rms = 1
-        print(self.p.get_default_input_device_info())
+        # print(self.p.get_default_input_device_info())
 
         def callback(in_data, frame_count, time_info, status):
             self.rms = audioop.rms(in_data, WIDTH) / 32767
