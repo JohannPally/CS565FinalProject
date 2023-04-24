@@ -22,7 +22,7 @@ def received_handler(data):
     if trts is not None:
         mess = f"Nova has been given {trts} treats so far!".encode('ascii')
         print('trying to send back')
-        s.send(mess)
+        s.send(str(mess))
     
 s = BluetoothServer(received_handler)
 
