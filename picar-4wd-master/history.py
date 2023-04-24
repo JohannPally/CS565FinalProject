@@ -21,19 +21,15 @@ class History:
     
     #TODO check for alerts
     def check_noise(self):
-        return
+        return np.var(self.samples[len(self.samples) - min(10, len(self.samples)) : ])
 
     def check_spaz(self):
         sum = 0
         for i in range(min(len(self.positions)-1, 5)):
-            # print('in loop')
             j = i*-1
             diff = np.subtract(self.positions[j], self.positions[j-1])
-            # print('diff', diff)
             s = np.sum(diff)
-            # print('s', s)
             sum += s
-            # print(sum)
         return sum
     
     #TODO plotting stuff

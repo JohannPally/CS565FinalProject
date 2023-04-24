@@ -3,6 +3,19 @@ import numpy as np
 
 h = History()
 
+h.add_sample(5)
+h.add_sample(4)
+h.add_sample(3)
+h.add_sample(2)
+print(h.check_noise())
+
+h.add_sample(2)
+h.add_sample(0)
+h.add_sample(1)
+h.add_sample(5)
+print(h.check_noise())
+
+
 h.add_position(np.array([10,0,0,0]))
 h.add_position(np.array([50,70,0,0]))
 h.add_position(np.array([30,0,0,0]))
