@@ -5,11 +5,12 @@ import audioop
 
 class Sound:
     def __init__(self):
+        index = 0
         self.p = pyaudio.PyAudio()
         WIDTH = 2
-        RATE = int(self.p.get_device_info_by_index(2)['defaultSampleRate'])
+        RATE = int(self.p.get_device_info_by_index(index)['defaultSampleRate'])
         # DEVICE = p.get_default_input_device_info()['index']
-        DEVICE = 2
+        DEVICE = index
         self.rms = 1
         print(self.p.get_default_input_device_info())
 
