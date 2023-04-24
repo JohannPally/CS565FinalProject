@@ -3,6 +3,7 @@ from dispenser import Dispense
 from dog_detection import Vision
 from sound import Sound
 from history import History
+from datetime import datetime
 
 HOST = "192.168.50.217" # IP address of your Raspberry PI
 PORT = 65432          # Port to listen on (non-privileged ports are > 1023)
@@ -17,14 +18,14 @@ hist = History()
 
 def received_handler(data):
     global disp
-    print('in receive handler')
+    # print('in receive handler')
     trts = disp.act(data) 
-    print('echo')
-    s.send(data)
-    print(type(data))
+    # print('echo')
+    # s.send(data)
+    # print(type(data))
     if trts is not None:
-        print('sending a message back')
-        s.send('treat given!\r\n')
+        # print('sending a message back')
+        s.send(str(trts)+' treat given!\r\n')
         # s.send(f"Nova has been given {trts} treats so far!".encode('utf-8'))
     
 s = BluetoothServer(received_handler)
@@ -46,14 +47,14 @@ while True:
     hist.add_sample(smp)
 
     # print('noise', hist.check_noise())
-    # if hist.check_noise():
-    #     message= f"NOISE alert".encode('utf-8')
-    #     s.send(str(message))
+    if hist.check_noise():
+        s.send(str('NOISE alert! - '+datetime.now()+'\r\n'))
 
     # print('move', hist.check_spaz())
-    # if hist.check_spaz():
+    if hist.check_spaz():
     #     message= f"MOVEMENT alert".encode('utf-8')
-    #     s.send(str(message))
+        # s.send(str(message))
+        s.send(str('MOVE alert! - '+datetime.now()+'\r\n'))
 
 
 # with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
