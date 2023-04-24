@@ -19,6 +19,9 @@ def received_handler(data):
     global disp
     print('in receive handler')
     trts = disp.act(data) 
+    print('echo')
+    s.send(data)
+    print(type(data))
     if trts is not None:
         print('sending a message back')
         s.send(f"Nova has been given {trts} treats so far!".encode('utf-8'))
