@@ -1,6 +1,7 @@
 import argparse
 import sys
 import time
+import numpy as np
 
 import cv2
 from tflite_support.task import core
@@ -74,7 +75,8 @@ class Vision:
                 #print(object_name)
                 if object_name == 'dog':
                     print('found dog')
-                    return detection
+                    bb = detection.bounding_box
+                    return np.array([bb.origin_x, bb.origin_y, bb.width, bb.height])
                 #TODO add to history?
 
             # Calculate the FPS

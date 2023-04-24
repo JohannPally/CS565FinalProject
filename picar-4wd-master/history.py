@@ -1,13 +1,13 @@
+import numpy as np
 
 class History:
     def __init__(self):
-        self.positions = []
-        self.samples = []
+        self.positions = [(50,50,200,200)]
+        self.samples = [0.0]
 
     def add_position(self, detection):
         if detection is not None:
-            #TODO check how to get position from detection
-            self.positions.append((0,0))
+            self.positions.append(detection)
         else:
             self.positions.append(self.positions[-1])
         return
@@ -24,6 +24,10 @@ class History:
         return
 
     def check_spaz(self):
+        sum = 0
+        for i in range(min(len(self.positions), 5)):
+            j = i*-1
+            sum += np.sum(np.subtract(self.positions[j], self.positions[j-1]))
         return
     
     #TODO plotting stuff
