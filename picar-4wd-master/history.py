@@ -27,6 +27,7 @@ class History:
         sum = 0
         for i in range(min(len(self.positions)-1, 5)):
             j = i*-1
+            print(j)
             diff = np.subtract(self.positions[j], self.positions[j-1])
             s = np.sum(diff)
             sum += s
