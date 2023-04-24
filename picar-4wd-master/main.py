@@ -17,7 +17,7 @@ hist = History()
 
 def received_handler(data):
     global disp
-    trts = disp.act() 
+    trts = disp.act(data) 
     if trts is not None:
         mess = f"Nova has been given {trts} treats so far!".encode('ascii')
         s.send(mess)
