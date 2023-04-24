@@ -26,7 +26,7 @@ class History:
 
     def check_spaz(self):
         sum = 0
-        for i in range(min(len(self.positions)-1, 5)):
+        for i in range(1,min(len(self.positions)-1, 5)):
             j = i*-1
             # print(j)
             diff = np.subtract(self.positions[j], self.positions[j-1])
