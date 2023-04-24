@@ -17,6 +17,7 @@ class Dispense:
     
     def act(self, mess):
         if self.check_message(mess):
+            print('good job detected')
             #TODO drop a treat
             fc.forward(10)
             time.sleep(.5)
@@ -25,4 +26,5 @@ class Dispense:
             return self.treats
         
         else:
+            print('not good job')
             return None

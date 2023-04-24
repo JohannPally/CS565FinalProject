@@ -17,17 +17,19 @@ hist = History()
 
 def received_handler(data):
     global disp
+    print('in receive handler')
     trts = disp.act(data) 
     if trts is not None:
         mess = f"Nova has been given {trts} treats so far!".encode('ascii')
+        print('trying to send back')
         s.send(mess)
     
 s = BluetoothServer(received_handler)
 
-while True:
-    input()
-    message= f"alert test".encode('ascii')
-    s.send(str(message))
+# while True:
+#     input()
+#     message= f"alert test".encode('ascii')
+#     s.send(str(message))
 
 pause()
 
