@@ -20,7 +20,7 @@ def received_handler(data):
     print('in receive handler')
     trts = disp.act(data) 
     if trts is not None:
-        s.send("Nova has been given "+trts+" treats so far!")
+        s.send("Nova has been given "+trts+" treats so far!".encode('utf-8'))
     
 s = BluetoothServer(received_handler)
 
@@ -42,12 +42,12 @@ while True:
 
     print('noise', hist.check_noise())
     if hist.check_noise():
-        message= f"NOISE alert".encode('ascii')
+        message= f"NOISE alert".encode('utf-8')
         s.send(str(message))
 
     print('move', hist.check_spaz())
     if hist.check_spaz():
-        message= f"MOVEMENT alert".encode('ascii')
+        message= f"MOVEMENT alert".encode('utf-8')
         s.send(str(message))
 
 
