@@ -45,7 +45,7 @@ while True:
         message= f"NOISE alert".encode('ascii')
         s.send(str(message))
 
-    print('move', hist.check_spaz)
+    print('move', hist.check_spaz())
     if hist.check_spaz():
         message= f"MOVEMENT alert".encode('ascii')
         s.send(str(message))

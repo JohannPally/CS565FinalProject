@@ -32,7 +32,7 @@ class Sound:
     def get_sample(self):
         if self.stream.is_active(): 
             db = 20 * log10(self.rms)
-            print(f"RMS: {self.rms} DB: {db}") 
+            # print(f"RMS: {self.rms} DB: {db}") 
             # refresh every 0.3 seconds 
             time.sleep(0.3)
             return db

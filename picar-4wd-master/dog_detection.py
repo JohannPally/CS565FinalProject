@@ -74,7 +74,7 @@ class Vision:
                 object_name = detection.categories[0].category_name
                 #print(object_name)
                 if object_name == 'dog':
-                    print('found dog')
+                    # print('found dog')
                     bb = detection.bounding_box
                     return np.array([bb.origin_x, bb.origin_y, bb.width, bb.height])
                 #TODO add to history?
