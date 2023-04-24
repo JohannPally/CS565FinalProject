@@ -28,7 +28,7 @@ class History:
         for i in range(min(len(self.positions), 5)):
             j = i*-1
             sum += np.sum(np.subtract(self.positions[j], self.positions[j-1]))
-        return
+        return sum
     
     #TODO plotting stuff
     def plot_positions(self):
