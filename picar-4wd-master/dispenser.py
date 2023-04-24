@@ -13,6 +13,9 @@ class Dispense:
         return
     
     def check_message(self, mess):
+        print()
+        print(mess)
+        print(type(mess))
         return b'good job!' == mess
     
     def act(self, mess):
