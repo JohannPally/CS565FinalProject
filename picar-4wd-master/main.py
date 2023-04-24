@@ -48,13 +48,13 @@ while True:
 
     # print('noise', hist.check_noise())
     if hist.check_noise():
-        s.send(str('NOISE alert! - '+datetime.now()+'\r\n'))
+        s.send(str('NOISE alert! - '+str(datetime.now())+'\r\n'))
 
     # print('move', hist.check_spaz())
     if hist.check_spaz():
     #     message= f"MOVEMENT alert".encode('utf-8')
         # s.send(str(message))
-        s.send(str('MOVE alert! - '+datetime.now()+'\r\n'))
+        s.send(str('MOVE alert! - '+str(datetime.now())+'\r\n'))
 
 
 # with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
