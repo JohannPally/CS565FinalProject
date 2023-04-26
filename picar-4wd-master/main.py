@@ -1,4 +1,5 @@
 import socket
+import time
 from dispenser import Dispense
 from dog_detection import Vision
 from sound import Sound
@@ -15,15 +16,19 @@ disp = Dispense()
 vis = Vision()
 snd = Sound()
 hist = History()
+refractory = time.time()
 
 def received_handler(data):
     global disp
+    global refractory
     # print('in receive handler')
     trts = disp.act(data) 
     # print('echo')
     # s.send(data)
     # print(type(data))
-    if trts is not None:
+    
+    if trts is not None and time.time() - refractory > 1:
+        refractory = time.time()
         # print('sending a message back')
         s.send(str(trts)+' treat given!\r\n')
         # s.send(f"Nova has been given {trts} treats so far!".encode('utf-8'))
