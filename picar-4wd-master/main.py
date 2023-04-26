@@ -43,6 +43,7 @@ s = BluetoothServer(received_handler)
 while True:
     #VISION
     det = vis.check_dog()
+    print('dog detected')
 
     #SOUND
     smp = snd.get_sample()
@@ -60,7 +61,7 @@ while True:
     #     message= f"MOVEMENT alert".encode('utf-8')
         # s.send(str(message))
         s.send(str('MOVE alert! - '+str(datetime.now())+'\r\n'))
-
+    print()
 
 # with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 #     s.bind((HOST, PORT))

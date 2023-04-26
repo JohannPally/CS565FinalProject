@@ -22,7 +22,10 @@ class History:
     
     #TODO check for alerts
     def check_noise(self):
-        return np.abs(np.var(self.samples[len(self.samples) - min(10, len(self.samples)) : ])) > 10
+        nse = np.abs(np.var(self.samples[len(self.samples) - min(10, len(self.samples)) : ])) 
+        # > 10
+        print('noise', nse)
+        return False
 
     def check_spaz(self):
         sum = 0
@@ -32,7 +35,9 @@ class History:
             diff = np.subtract(self.positions[j], self.positions[j-1])
             s = np.sum(diff)
             sum += s
-        return sum > 20
+        print('movemnet', sum)
+        # sum > 20
+        return False
     
     #TODO plotting stuff
     def plot_positions(self):
