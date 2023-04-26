@@ -37,7 +37,7 @@ class History:
             sum += s
         print('movemnet', sum)
         # sum > 20
-        return np.abs(sum) > 100
+        return np.abs(sum) > 50
     
     #TODO plotting stuff
     def plot_positions(self):

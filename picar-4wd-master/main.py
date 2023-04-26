@@ -27,7 +27,7 @@ def received_handler(data):
     # s.send(data)
     # print(type(data))
     
-    if trts is not None and time.time() - refractory > 1:
+    if trts is not None and time.time() - refractory > 3:
         refractory = time.time()
         # print('sending a message back')
         s.send(str(trts)+' treat given!\r\n')
