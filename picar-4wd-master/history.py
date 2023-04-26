@@ -25,7 +25,7 @@ class History:
         nse = np.abs(np.var(self.samples[len(self.samples) - min(10, len(self.samples)) : ])) 
         # > 10
         print('noise', nse)
-        return False
+        return np.abs(nse) > 100
 
     def check_spaz(self):
         sum = 0
@@ -37,7 +37,7 @@ class History:
             sum += s
         print('movemnet', sum)
         # sum > 20
-        return False
+        return np.abs(sum) > 100
     
     #TODO plotting stuff
     def plot_positions(self):

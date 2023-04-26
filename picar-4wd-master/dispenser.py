@@ -20,10 +20,11 @@ class Dispense:
             print('good job detected')
             #TODO drop a treat
             fc.forward(10)
-            time.sleep(1)
+            time.sleep(3)
             fc.stop()
+            time.sleep(3)
             fc.backward(10)
-            time.sleep(1)
+            time.sleep(3)
             fc.stop()
             self.treats += 1
             return self.treats
